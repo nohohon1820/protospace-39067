@@ -4,11 +4,11 @@ class PrototypesController < ApplicationController
   before_action :contributor_confirmation, only: [:edit, :update, :destroy]
 
   def index
-    @prototypes = Prototype.all
+    @prototypes = Prototype.includes(:user)
   end
 
   def new
-    @prototype = Prototype.includes(:user)
+    @prototype = Prototype.new
   end
 
   def create
